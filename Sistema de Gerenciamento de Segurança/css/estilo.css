@@ -1,0 +1,113 @@
+/* RESET */
+body {
+    background-color: black !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+
+/* MOLDURA DE FUNDO PERSONALIZADO */
+.moldura-imagem {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 65%;
+    height: 100%;
+    background-image: url('../img/moldura_fundo.png');
+    border-radius: 0 0 0 150%;
+    background-color: transparent;
+    opacity: 0.8;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+
+/* ESTILIZAÇÃO DO FORMULÁRIO DE VALIDAÇÃO */
+h2 {
+    color: #ffffff !important;
+    font-size: 24px !important;
+    font-family: 'Maharlika', sans-serif !important;
+}
+
+h1 {
+    color: #ffffff !important;
+    font-size: 56px !important;
+    font-family: 'Maharlika', sans-serif !important;
+}
+
+.labelUsuario,
+.labelSenha {
+    color: #ffffff !important;
+}
+
+.inputUsuario,
+.inputSenha,
+.botaoEntrar {
+    width: 100%;
+    max-width: 350px;
+    display: block;
+}
+
+.inputUsuario {
+    background-color: transparent !important;
+    border-radius: 0!important;
+    border: none!important;
+    border-bottom: 1px solid #ffffff !important;
+    box-shadow: none !important;
+    padding-left: 10px;
+    color: #fff!important;
+}
+
+.inputUsuario::placeholder {
+    color: white !important;
+    opacity: 1;
+}
+
+.inputSenha {
+    background-color: transparent !important;
+    border-radius: 0!important;
+    border: none!important;
+    border-bottom: 1px solid #ffffff !important;
+    box-shadow: none !important;
+    padding-left: 10px;
+    color: #fff!important;
+}
+
+.inputSenha::placeholder {
+    color: white !important;
+    opacity: 1;
+}
+
+.inputUsuario:focus,
+.inputSenha:focus {
+    border-bottom: 2px solid #00ff00!important; /* Borda verde ao focar no input */
+    outline: none;
+}
+
+/* ESTILIZAÇÃO DO BOTÃO */
+.botaoEntrar {
+    width: 100%; 
+    max-width: 350px; 
+    background-color: #28a745;
+    color: white; 
+    border: none!important;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 20px; 
+}
+
+.botaoEntrar:hover {
+    background-color: #218838; 
+}
+/*ESTILIZAÇÃO DO FOOTER*/
+footer{
+    width: 100%;
+    max-width: 350px;
+}
+footer>.copy>p{
+    font-size: 13px;
+}
