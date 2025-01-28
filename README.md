@@ -1,6 +1,5 @@
-# Desafio de Projeto sobre Git/GitHub
+# Meu Portfólio
 
-Repositório Criado para o Desafio de Projeto
+Repositório Criado para o exposição do meu portfólio
 
 ## Links úteis
-[Sintaxe Básica Markdown](https://www.markdownguide.org/)
