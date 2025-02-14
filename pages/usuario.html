@@ -17,24 +17,77 @@
     <div class="container mt-5">
         <main>
             <section class="mt-5 align-items-center">
-                <h2>Gerenciamento de Segurança</h2>
-                <h1>Gotham City</h1>
-                <!-- Formulário para validação de usuário -->
-                <form class="mt-5">
-                    <div class="mb-3">
-                        <label class="form-label labelUsuario" for="inlineFormInputGroupUsername2">Usuário</label> 
-                        <input type="text" class="form-control inputUsuario" id="inlineFormInputGroupUsername2" placeholder="Digite o usuário">  
+                <div class="profile-container">
+                    <!-- Cabeçalho do Perfil -->
+                    <div class="profile-header">
+                      <img src="avatar.jpg" alt="Foto do Usuário" class="profile-avatar" />
+                      <h2 class="profile-name">Bruce Wayne</h2>
+                      <p class="profile-role">Administrador de Segurança</p>
+                      <button class="edit-profile-btn">Editar Perfil</button>
                     </div>
-                    <div class="mb-3">
-                      <label for="exampleInputPassword1" class="form-label labelSenha">Senha</label>
-                      <input type="password" class="form-control inputSenha" id="exampleInputPassword1" placeholder="Digite sua senha">
+                  
+                    <!-- Tabs para Navegação -->
+                    <div class="profile-tabs">
+                      <button class="tab-btn active">Informações Pessoais</button>
+                      <button class="tab-btn">Permissões</button>
+                      <button class="tab-btn">Histórico de Atividades</button>
+                      <button class="tab-btn">Configurações</button>
                     </div>
-                    <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label text-white" for="exampleCheck1">Lembrar de mim</label>
+                  
+                    <!-- Conteúdo das Abas -->
+                    <div class="profile-content">
+                      <!-- Aba: Informações Pessoais -->
+                      <div class="tab-content active" id="personal-info">
+                        <h3>Informações Pessoais</h3>
+                        <p><strong>E-mail:</strong> bruce.wayne@wayneindustries.com</p>
+                        <p><strong>Telefone:</strong> (21) 1234-5678</p>
+                      </div>
+                  
+                      <!-- Aba: Permissões -->
+                      <div class="tab-content" id="permissions">
+                        <h3>Permissões</h3>
+                        <ul>
+                          <li>Acesso ao Inventário</li>
+                          <li>Adicionar/Editar Equipamentos</li>
+                          <li>Visualizar Relatórios</li>
+                        </ul>
+                      </div>
+                  
+                      <!-- Aba: Histórico de Atividades -->
+                      <div class="tab-content" id="activity-history">
+                        <h3>Histórico de Atividades</h3>
+                        <table>
+                          <thead>
+                            <tr>
+                              <th>Data</th>
+                              <th>Ação</th>
+                              <th>Recurso</th>
+                              <th>Status</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>25/01/2025</td>
+                              <td>Adicionou</td>
+                              <td>Computador X</td>
+                              <td>Concluído</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                  
+                      <!-- Aba: Configurações -->
+                      <div class="tab-content" id="settings">
+                        <h3>Configurações</h3>
+                        <form>
+                          <label for="password">Alterar Senha:</label>
+                          <input type="password" id="password" placeholder="Nova senha" />
+                          <button type="submit">Salvar</button>
+                        </form>
+                      </div>
                     </div>
-                    <button type="submit" class="btn btn-success botaoEntrar">Entrar</button>
-                  </form>
+                  </div>
+                  
 
             </section>
         </main>
