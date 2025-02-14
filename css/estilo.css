@@ -6,7 +6,15 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
 
 
 /* MOLDURA DE FUNDO PERSONALIZADO */
@@ -27,13 +35,13 @@ body {
 
 
 /* ESTILIZAÇÃO DO FORMULÁRIO DE VALIDAÇÃO */
-h2 {
+.formLogin h2 {
     color: #ffffff !important;
     font-size: 24px !important;
     font-family: 'Maharlika', sans-serif !important;
 }
 
-h1 {
+.formLogin h1 {
     color: #ffffff !important;
     font-size: 56px !important;
     font-family: 'Maharlika', sans-serif !important;
@@ -54,12 +62,12 @@ h1 {
 
 .inputUsuario {
     background-color: transparent !important;
-    border-radius: 0!important;
-    border: none!important;
+    border-radius: 0 !important;
+    border: none !important;
     border-bottom: 1px solid #ffffff !important;
     box-shadow: none !important;
     padding-left: 10px;
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .inputUsuario::placeholder {
@@ -69,12 +77,12 @@ h1 {
 
 .inputSenha {
     background-color: transparent !important;
-    border-radius: 0!important;
-    border: none!important;
+    border-radius: 0 !important;
+    border: none !important;
     border-bottom: 1px solid #ffffff !important;
     box-shadow: none !important;
     padding-left: 10px;
-    color: #fff!important;
+    color: #fff !important;
 }
 
 .inputSenha::placeholder {
@@ -84,30 +92,199 @@ h1 {
 
 .inputUsuario:focus,
 .inputSenha:focus {
-    border-bottom: 2px solid #00ff00!important; /* Borda verde ao focar no input */
+    border-bottom: 2px solid #00ff00 !important;
+    /* Borda verde ao focar no input */
     outline: none;
 }
 
 /* ESTILIZAÇÃO DO BOTÃO */
 .botaoEntrar {
-    width: 100%; 
-    max-width: 350px; 
+    width: 100%;
+    max-width: 350px;
     background-color: #28a745;
-    color: white; 
-    border: none!important;
+    color: white;
+    border: none !important;
     padding: 10px;
     cursor: pointer;
-    margin-top: 20px; 
+    margin-top: 20px;
 }
 
 .botaoEntrar:hover {
-    background-color: #218838; 
+    background-color: #218838;
 }
+
 /*ESTILIZAÇÃO DO FOOTER*/
-footer{
+footer {
     width: 100%;
     max-width: 350px;
+    background-color: #000;
+    color: #fff;
+    padding: 10px 0;
 }
-footer>.copy>p{
+
+footer>.copy>p {
     font-size: 13px;
 }
+
+/*ESTILIZAÇÃO DAS PÁGINAS*/
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 58px;
+    background-color: #000000;
+}
+
+.container-fluid {
+    padding-top: 58px!important;
+}
+
+.navbar-text {
+    font-size: 1.2rem;
+    color: #ffffff !important;
+    font-family: "Poppins", serif;
+}
+
+.sidebar {
+    width: 100%!important;
+    max-width: 350px!important;
+    background-color: #000000;
+    padding: 20px;
+    min-height: 100vh;
+    padding-top: 20px;
+    margin-top: 58px;
+    
+}
+
+
+/* Estilizando o aside */
+.perfil-aside {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    max-width: 300px;
+    gap: 5px;
+}
+
+/* Estilo da imagem do avatar */
+.avatarSidebar {
+    width: 100%;
+    max-width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover; 
+    margin-right: 15px;
+}
+
+.perfil-avatar {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+/* Estilo para o nome do usuário */
+.nomeSidebar {
+    font-size: 22px;
+    color: #ffffff!important;
+    margin: 0;
+}
+
+/* Estilo para a função do usuário */
+.cargoSidebar {
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0; /* Remove o padding extra */
+    font-style: italic;
+}
+
+/* Estilo para o nome do usuário */
+.perfil-nome {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333!important;
+    margin: 0;
+}
+
+/* Estilo para a função do usuário */
+.perfil-cargo {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+    font-style: italic;
+}
+
+/*ESTILIZAÇÃO DO MENU NA SIDEBAR*/
+
+.sidebar ul.nav {
+    margin-top: 20px;
+    padding: 0;
+  }
+  
+  .sidebar ul.nav li {
+    margin-bottom: 10px;
+    border-bottom: 1px dashed #bcbcbc;
+  }
+  
+  .sidebar ul.nav li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #ffffff; /* Texto preto */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar ul.nav li a .fas {
+    margin-right: 10px;
+    color: #00ff6a; /* Cor inicial dos ícones */
+    transition: color 0.3s ease;
+  }
+  
+  .sidebar ul.nav li a:hover {
+    background-color: #00ff00; /* Fundo verde no hover */
+    color: #fff; /* Texto branco */
+  }
+  
+  .sidebar ul.nav li a:hover .fas {
+    color: #fff; /* Ícone branco no hover */
+  }
+
+  /* Main */
+main {
+    padding: 20px;
+}
+
+.perfil-avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+button.alterarFoto {
+    color: #000000;
+    font-size: 1.2rem;
+    border: none;
+    background: none!important;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button.alterarFoto:hover {
+    color: #373e46;
+}
+
+
+
+
+
