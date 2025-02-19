@@ -39,10 +39,12 @@ body {
 .formLogin h1 {
     color: #ffffff !important;
     font-family: 'Maharlika', sans-serif !important;
+
 }
 
 .formLogin h2 {
-    font-size: 24px !important;
+    font-size: 1.4rem !important;
+    text-align: center;
 }
 
 .formLogin h1 {
