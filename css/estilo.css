@@ -31,12 +31,8 @@ body {
 /* Centralização do conteúdo dentro do mainLogin */
 .mainLogin {
     width: 100%;
-    max-width: 400px; /* Define um tamanho máximo para o formulário */
-    background-color: #2a2a2a; /* Fundo do formulário */
+    max-width: 400px;
     padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Centraliza o texto dentro do formulário */
 }
 
 /* ESTILIZAÇÃO DO FORMULÁRIO DE VALIDAÇÃO */
