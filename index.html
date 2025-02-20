@@ -68,14 +68,14 @@
     };
 
     function efetuarLogin(event) {
-      event.preventDefault();
+      event.preventDefault(); // Impede o envio do formulário, para que possamos verificar as credenciais primeiro
 
       const usuario = document.getElementById("usuario").value;
       const senha = document.getElementById("senha").value;
       const lembrarDeMim = document.getElementById("lembrarDeMim").checked;
 
       if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-        // Salva as credenciais no localStorage se "lembrar de mim" estiver ativado
+        // Se o "lembrar de mim" estiver ativado, salva as credenciais no localStorage
         if (lembrarDeMim) {
           localStorage.setItem("usuario", usuario);
           localStorage.setItem("senha", senha);
@@ -85,12 +85,13 @@
           localStorage.removeItem("senha");
           localStorage.removeItem("lembrarDeMim");
         }
-        // Redireciona para a página do usuário
-        location.href = 'paginas/usuario.html';
+        // Redireciona para a página do usuário (certifique-se de que o caminho está correto)
+        location.href = 'paginas/usuario.html'; // Usando o sinal de atribuição correto
       } else {
         alert("Usuário ou senha incorretos.");
       }
     }
+
   </script>
 
   <script src="js/modulo.js"></script>
