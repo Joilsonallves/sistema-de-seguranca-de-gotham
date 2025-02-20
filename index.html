@@ -54,7 +54,7 @@
     let usuarioCadastrado = "admin";
     let senhaCadastrada = "123";
 
-    // Ao carregar a página, verificar se há credenciais salvas
+    // Ao carregar a página, verifica se há credenciais salvas
     window.onload = () => {
       if (localStorage.getItem("lembrarDeMim") === "true") {
         document.getElementById("usuario").value = localStorage.getItem("usuario");
@@ -64,14 +64,13 @@
     };
 
     function efetuarLogin(event) {
-      event.preventDefault(); // Impede o envio do formulário, para que possamos verificar as credenciais primeiro
+      event.preventDefault();
 
       const usuario = document.getElementById("usuario").value;
       const senha = document.getElementById("senha").value;
       const lembrarDeMim = document.getElementById("lembrarDeMim").checked;
 
       if (usuario === usuarioCadastrado && senha === senhaCadastrada) {
-        // Se o "lembrar de mim" estiver ativado, salva as credenciais no localStorage
         if (lembrarDeMim) {
           localStorage.setItem("usuario", usuario);
           localStorage.setItem("senha", senha);
@@ -81,8 +80,9 @@
           localStorage.removeItem("senha");
           localStorage.removeItem("lembrarDeMim");
         }
-        // Redireciona para a página do usuário (certifique-se de que o caminho está correto)
-        location.href = 'paginas/usuario.html'; // Usando o sinal de atribuição correto
+        // Redireciona para a página do usuário
+        alert('Login efetuado com sucesso!');
+        location.href = 'paginas/usuario.html';
       } else {
         alert("Usuário ou senha incorretos.");
       }
