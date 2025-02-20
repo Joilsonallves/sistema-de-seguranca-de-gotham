@@ -54,11 +54,15 @@
   </div>
 
   <script>
+
+    let usuarioCadastrado = "admin";
+    let senhaCadastrada = 123;
     function efetuarLogin() {
       let usuario = document.getElementById("usuario").value;
       let senha = document.getElementById("senha").value;
       let lembrarDeMim = document.getElementById("lembrarDeMim");
 
+      
       if(usuario === usuarioCadastrado && senha === senhaCadastrada){
         location.href('paginas/usuario.html');
       }
