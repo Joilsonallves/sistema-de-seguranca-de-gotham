@@ -14,7 +14,6 @@
 </head>
 
 <body class="telaLogin">
-  <!-- Moldura de imagem no canto superior direito -->
   <div class="moldura-imagem"></div>
   <div class="container position-relative">
     <main class="mainLogin">
@@ -22,24 +21,21 @@
         <h2>Gerenciamento de Segurança</h2>
         <h1>Gotham City</h1>
         <!-- Formulário para validação de usuário -->
-        <form class="mt-5">
+        <form class="mt-5" onsubmit="efetuarLogin(event)">
           <div class="mb-3">
-            <label class="form-label labelUsuario" for="inlineFormInputGroupUsername2">Usuário</label>
-            <input type="text" class="form-control inputUsuario" id="usuario"
-              placeholder="Digite o usuário">
+            <label class="form-label labelUsuario" for="usuario">Usuário</label>
+            <input type="text" class="form-control inputUsuario" id="usuario" placeholder="Digite o usuário">
           </div>
           <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label labelSenha">Senha</label>
-            <input type="password" class="form-control inputSenha" id="senha"
-              placeholder="Digite sua senha">
+            <label for="senha" class="form-label labelSenha">Senha</label>
+            <input type="password" class="form-control inputSenha" id="senha" placeholder="Digite sua senha">
           </div>
           <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label text-white lembrarDeMim" for="exampleCheck1">Lembrar de mim</label>
+            <input type="checkbox" class="form-check-input" id="lembrarDeMim">
+            <label class="form-check-label text-white lembrarDeMim" for="lembrarDeMim">Lembrar de mim</label>
           </div>
-          <button type="submit" class="btn btn-success botaoEntrar" onclick="efetuarLogin()">Entrar</button>
+          <button type="submit" class="btn btn-success botaoEntrar">Entrar</button>
         </form>
-
       </section>
     </main>
     <!-- Copyright -->
@@ -91,7 +87,6 @@
         alert("Usuário ou senha incorretos.");
       }
     }
-
   </script>
 
   <script src="js/modulo.js"></script>
