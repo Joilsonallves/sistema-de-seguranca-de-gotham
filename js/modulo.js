@@ -1,9 +1,9 @@
-//SCRIPT PARA EFETUAR LOGIN
+// SCRIPT PARA EFETUAR LOGIN
 async function efetuarLogin(event) {
   event.preventDefault(); // Previne o recarregamento da página
 
-  const username = document.getElementById('username').value;
-  const password = document.getElementById('password').value;
+  const username = document.getElementById('usuario').value;
+  const password = document.getElementById('senha').value;
 
   try {
     const response = await fetch('http://localhost:3000/api/login', {
@@ -15,11 +15,9 @@ async function efetuarLogin(event) {
     const data = await response.json();
 
     if (response.ok) {
-      // Armazenar o token e os dados do usuário no localStorage
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('user', JSON.stringify(data.user));  // Salvando os dados do usuário
+      localStorage.setItem('token', data.token); // Armazenando o token no localStorage
       alert(data.message);
-      window.location.href = 'usuario.html';  // Redirecionar para a página do usuário
+      window.location.href = 'paginas/usuario.html';  // Redirecionar para a página do usuário
     } else {
       alert(data.message); // Exibe a mensagem de erro
     }
@@ -29,32 +27,41 @@ async function efetuarLogin(event) {
   }
 }
 
-  
-// SCRIPTS DA PÁGINA DE USUARIO
+// Função assíncrona para pegar dados do usuário usando o token
+async function obterUsuario() {
+  const token = localStorage.getItem('token');
 
-document.addEventListener('DOMContentLoaded', () => {
-  const user = JSON.parse(localStorage.getItem('user'));
+  if (token) {
+    try {
+      const response = await fetch('http://localhost:3000/api/usuarios', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}` // Enviar o token no cabeçalho
+        }
+      });
 
-  if (!user) {
-    alert('Você não está autenticado!');
-    window.location.href = 'index.html';
-    return;
+      const data = await response.json();
+
+      if (response.ok) {
+        console.log('Dados do usuário:', data);
+        // Processar os dados do usuário conforme necessário
+      } else {
+        console.error('Erro ao obter dados do usuário:', data);
+      }
+    } catch (err) {
+      console.error('Erro ao fazer requisição de dados do usuário:', err);
+    }
+  } else {
+    console.error('Token não encontrado. Usuário não autenticado.');
   }
+}
 
-  // Preenche as informações do perfil
-  document.querySelector('.nomeSidebar').textContent = user.name;
-  document.querySelector('.cargoSidebar').textContent = user.role;
-  document.querySelector('.infoPessoal').innerHTML = `
-    <p><strong>Nome Completo:</strong> ${user.name}</p>
-    <p><strong>Cargo:</strong> ${user.role}</p>
-    <p><strong>E-mail:</strong> ${user.email}</p>
-    <p><strong>Telefone:</strong> (21) 1234-5678</p>
-  `;
-});
+// Chamar a função para obter dados do usuário (pode ser em um evento ou carregamento da página)
+obterUsuario();
 
-  
+
 // SCRIPT PARA FAZER LOGOUT
-
 function logout() {
   localStorage.removeItem('user');
   localStorage.removeItem('token');
@@ -63,9 +70,7 @@ function logout() {
 }
 
 
-  
 // SCRIPT PARA SALVAR CONFIGURAÇÃO
-
 async function salvarConfiguracoes() {
   const user = JSON.parse(localStorage.getItem('user'));
   const name = document.querySelector('input[aria-label="nome completo"]').value;
@@ -99,10 +104,16 @@ async function salvarConfiguracoes() {
 }
 
 
-//SCRIPT PARA CARREGAR HISTÓRICO DE ATIVIDADES
-
+// SCRIPT PARA CARREGAR HISTÓRICO DE ATIVIDADES
 async function carregarHistorico() {
   const user = JSON.parse(localStorage.getItem('user'));
+
+  // Verifique se o usuário está presente no localStorage
+  if (!user) {
+    alert('Você não está autenticado! Faça login primeiro.');
+    window.location.href = 'index.html'; // Redireciona para a página de login
+    return;
+  }
 
   try {
     const response = await fetch(`http://localhost:3000/api/historico?username=${user.username}`, {
@@ -129,6 +140,4 @@ async function carregarHistorico() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', carregarHistorico);
 
-  
