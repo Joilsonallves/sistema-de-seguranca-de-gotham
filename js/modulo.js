@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
     if (!user) {
       alert('Você não está autenticado!');
-      window.location.href = '../index.html';
+      window.location.href = 'index.html';
       return;
     }
   
