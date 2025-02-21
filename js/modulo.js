@@ -16,8 +16,15 @@ async function efetuarLogin(event) {
 
     if (response.ok) {
       localStorage.setItem('token', data.token); // Armazenando o token no localStorage
+
+      // Aqui, você deve armazenar as informações do usuário (caso venham na resposta)
+      localStorage.setItem('user', JSON.stringify(data.user)); // Armazenando o objeto 'user' no localStorage
+
+      console.log('Usuário armazenado:', data.user); // Verifique se o usuário está correto
+
       alert(data.message);
       window.location.href = 'paginas/usuario.html';  // Redirecionar para a página do usuário
+
     } else {
       alert(data.message); // Exibe a mensagem de erro
     }
@@ -60,7 +67,6 @@ async function obterUsuario() {
 // Chamar a função para obter dados do usuário (pode ser em um evento ou carregamento da página)
 obterUsuario();
 
-
 // SCRIPT PARA FAZER LOGOUT
 function logout() {
   localStorage.removeItem('user');
@@ -69,10 +75,34 @@ function logout() {
   window.location.href = '../index.html'; // Redireciona para a página de login
 }
 
-
 // SCRIPT PARA SALVAR CONFIGURAÇÃO
 async function salvarConfiguracoes() {
-  const user = JSON.parse(localStorage.getItem('user'));
+  const user = localStorage.getItem('user');
+
+  // Verificar se o 'user' existe no localStorage
+  if (!user) {
+    alert('Você não está autenticado! Faça login primeiro.');
+    window.location.href = '../index.html'; // Redireciona para a página de login
+    return;
+  }
+
+  // Parse o valor do 'user', pois ele existe agora
+  let parsedUser;
+  try {
+    parsedUser = JSON.parse(user);
+  } catch (err) {
+    console.error('Erro ao analisar o usuário:', err);
+    alert('Erro ao carregar os dados do usuário. Tente novamente mais tarde.');
+    return;
+  }
+
+  if (!parsedUser) {
+    console.error('Usuário não encontrado ou inválido.');
+    alert('Usuário inválido. Faça login novamente.');
+    window.location.href = '../index.html'; // Redireciona para a página de login
+    return;
+  }
+
   const name = document.querySelector('input[aria-label="nome completo"]').value;
   const email = document.querySelector('input[aria-label="Novo email"]').value;
   const phone = document.querySelector('input[aria-label="Novo telefone"]').value;
@@ -82,17 +112,16 @@ async function salvarConfiguracoes() {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}` // Passando o token no cabeçalho
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
-      body: JSON.stringify({ username: user.username, name, email, phone }),
+      body: JSON.stringify({ username: parsedUser.username, name, email, phone }),
     });
 
     const data = await response.json();
 
     if (response.ok) {
       alert(data.message);
-      // Atualiza os dados do usuário no LocalStorage
-      localStorage.setItem('user', JSON.stringify(data.user));
+      localStorage.setItem('user', JSON.stringify(data.user)); // Atualiza o user no LocalStorage
       window.location.reload(); // Atualiza a página com as novas configurações
     } else {
       alert(data.message);
@@ -103,27 +132,24 @@ async function salvarConfiguracoes() {
   }
 }
 
-
 // SCRIPT PARA CARREGAR HISTÓRICO DE ATIVIDADES
 async function carregarHistorico() {
   const user = JSON.parse(localStorage.getItem('user'));
 
-  // Verifique se o usuário está presente no localStorage
   if (!user) {
     alert('Você não está autenticado! Faça login primeiro.');
-    window.location.href = 'index.html'; // Redireciona para a página de login
+    window.location.href = '../index.html'; // Redireciona para a página de login
     return;
   }
 
   try {
     const response = await fetch(`http://localhost:3000/api/historico?username=${user.username}`, {
       headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}` // Passando o token no cabeçalho
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
     });
 
     const historico = await response.json();
-
     const tbody = document.querySelector('table tbody');
     historico.forEach(atividade => {
       const tr = document.createElement('tr');
@@ -139,5 +165,3 @@ async function carregarHistorico() {
     console.error('Erro ao carregar histórico:', err);
   }
 }
-
-
