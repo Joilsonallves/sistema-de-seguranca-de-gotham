@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Sistema de Gerenciamento{% endblock %}
+
+{% block content %}
+
+<!-- Contéudo -->
+<h1 class="navbar-text text-center mt-2">
+  Inventário | Sistema de Gerenciamento de Segurança
+</h1>
+
+<!-- Informações do Inventário -->
+<section>
+  <div class="row mt-5 justify-content-center text-center">
+    <div class="col-md-10">
+      <h3 class="text-center">Inventário</h3>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Nome do equipamento</th>
+              <th scope="col">Tipo</th>
+              <th scope="col">Status</th>
+              <th scope="col">Localização</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody id="inventario-tabela">
+
+          </tbody>
+        </table>
+
+      </div> <!-- Fechamento da div table-responsive -->
+
+      <div>
+        <label for="nome">Nome do item:</label>
+        <input type="text" id="nome" placeholder="Nome do item">
+      </div>
+      <div>
+        <label for="tipo">Tipo do item:</label>
+        <input type="text" id="tipo" placeholder="Tipo do item">
+      </div>
+      <div>
+        <label for="status">Status do item:</label>
+        <input type="text" id="status" placeholder="Status do item">
+      </div>
+      <div>
+        <label for="localizacao">Localização do item:</label>
+        <input type="text" id="localizacao" placeholder="Localização do item">
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-success btnDashboard" onclick="adicionarInventario()">Adicionar</button>
+
+      </div>
+
+
+      <!-- Modal de edição -->
+      <div class="modal fade" id="editarInventarioModal" tabindex="-1" role="dialog"
+        aria-labelledby="editarInventarioModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="editarInventarioModalLabel">Editar Inventário</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-group">
+                  <label for="nomeEditar">Nome do item:</label>
+                  <input type="text" class="form-control" id="nomeEditar" placeholder="Nome do item">
+                </div>
+                <div class="form-group">
+                  <label for="tipoEditar">Tipo do item:</label>
+                  <input type="text" class="form-control" id="tipoEditar" placeholder="Tipo do item">
+                </div>
+                <div class="form-group">
+                  <label for="statusEditar">Status do item:</label>
+                  <input type="text" class="form-control" id="statusEditar" placeholder="Status do item">
+                </div>
+                <div class="form-group">
+                  <label for="localizacaoEditar">Localização do item:</label>
+                  <input type="text" class="form-control" id="localizacaoEditar" placeholder="Localização do item">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" id="salvarEditarInventario">Salvar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

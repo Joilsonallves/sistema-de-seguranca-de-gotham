@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Configurações - Sistema de Gerenciamento{% endblock %}
+
+{% block content %}
+<!-- Conteúdo -->
+<h1 class="navbar-text text-center mt-2">
+  Configurações | Sistema de Gerenciamento de Segurança
+</h1>
+
+<!-- Configurações -->
+<section>
+  <div class="row mt-5 justify-content-center text-center">
+    <div class="col-md-10">
+      <h3 class="text-center mt-2">Adicionar Usuário</h3>
+      <section class="justify-content-between">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 col-md-8 col-sm-12 mb-4">
+            <label for="nomeNovoUsuario">Nome do Usuário</label>
+            <input type="text" class="form-control" placeholder="Insira o nome completo" id="nomeNovoUsuario">
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-12 mb-4">
+            <label for="senhaNovoUsuario">Senha</label>
+            <input type="password" class="form-control" placeholder="Insira a senha" id="senhaNovoUsuario">
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-12 mb-4">
+            <label for="emailNovoUsuario">Email</label>
+            <input type="text" class="form-control" placeholder="Insira o email" id="emailNovoUsuario">
+          </div>
+          <div class="col-lg-6 col-md-8 col-sm-12 mb-4">
+            <label for="cargoNovoUsuario" class="form-label">Permissão</label>
+            <select class="form-select" id="cargoNovoUsuario">
+              <option value="admin">Administrador</option>
+              <option value="gerente">Gerente</option>
+              <option value="funcionario">Funcionário</option>
+            </select>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="button" class="btn btn-success btnDashboard" id="btnAdicionarUsuario">Adicionar</button>
+          </div>
+        </div>
+
+        <h3 class="text-center">Usuários adicionados</h3>
+        <div class="table-responsive">
+          <table class="table" id="tabela-usuarios">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Email</th>
+                <th scope="col">Permissão</th>
+                <th scope="col">Ação</th>
+              </tr>
+            </thead>
+            <tbody id="corpo-tabela">
+              <!-- Usuários serão carregados aqui via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para Editar Usuário -->
+<div class="modal fade" id="modalEditarUsuario" tabindex="-1" aria-labelledby="modalEditarUsuarioLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarUsuarioLabel">Editar Usuário</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formEditarUsuario">
+          <input type="hidden" id="idUsuarioEditar">
+          <div class="mb-3">
+            <label for="nomeUsuarioEditar" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeUsuarioEditar" required>
+          </div>
+          <div class="mb-3">
+            <label for="emailUsuarioEditar" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailUsuarioEditar" required>
+          </div>
+          <div class="mb-3">
+            <label for="senhaUsuarioEditar" class="form-label">Nova Senha (opcional)</label>
+            <input type="password" class="form-control" id="senhaUsuarioEditar">
+          </div>
+          <div class="mb-3">
+            <label for="cargoUsuarioEditar" class="form-label">Permissão</label>
+            <select class="form-select" id="cargoUsuarioEditar">
+              <option value="admin">Administrador</option>
+              <option value="gerente">Gerente</option>
+              <option value="funcionario">Funcionário</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary" id="btnSalvarEdicao">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block scripts %}
+{% endblock %}

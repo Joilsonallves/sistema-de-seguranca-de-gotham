@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Sistema de Gerenciamento{% endblock %}
+
+{% block content %}
+<!-- Conteúdo -->
+<h1 class="text-center mt-3">Dispositivos de Segurança</h1>
+<section>
+  <div class="row mt-4 justify-content-center">
+    <div class="col-md-10">
+      <div class="table-responsive">
+        <table class="table" id="tabela-dispositivos">
+          <thead>
+            <tr>
+              <th scope="col">Nome</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Status</th>
+              <th scope="col">Localização</th>
+              <th scope="col">Fabricante</th>
+              <th scope="col">Data de Instalação</th>
+              <th scope="col">Ação</th>
+            </tr>
+          </thead>
+          <tbody id="corpo-dispositivos"></tbody>
+        </table>
+        
+        <button id="btnAdicionarDispositivo" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#modalAdicionarDispositivo">
+          Adicionar Dispositivo
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal para adicionar dispositivo -->
+<div class="modal fade" id="modalAdicionarDispositivo" tabindex="-1" aria-labelledby="modalAdicionarDispositivoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAdicionarDispositivoLabel">Adicionar Dispositivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formAdicionarDispositivo">
+          <div class="mb-3">
+            <label for="nomeNovoDispositivo" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeNovoDispositivo" required>
+          </div>
+          <div class="mb-3">
+            <label for="categoriaNovoDispositivo" class="form-label">Categoria</label>
+            <input type="text" class="form-control" id="categoriaNovoDispositivo" required>
+          </div>
+          <div class="mb-3">
+            <label for="localizacaoNovoDispositivo" class="form-label">Localização</label>
+            <input type="text" class="form-control" id="localizacaoNovoDispositivo" required>
+          </div>
+          <div class="mb-3">
+            <label for="statusNovoDispositivo" class="form-label">Status</label>
+            <select name="status" id="statusNovoDispositivo" class="form-control">
+              <option value="Em Uso">Em Uso</option>
+              <option value="Em Estoque">Em Estoque</option>
+              <option value="Danificado">Danificado</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fabricanteNovoDispositivo" class="form-label">Fabricante</label>
+            <input type="text" class="form-control" id="fabricanteNovoDispositivo" required>
+          </div>
+          <div class="mb-3">
+            <label for="dataInstalacaoNovoDispositivo" class="form-label">Data de Instalação</label>
+            <input type="date" class="form-control" id="dataInstalacaoNovoDispositivo" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" id="btnSalvarDispositivo" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalEditarDispositivo" tabindex="-1" aria-labelledby="modalEditarDispositivoLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalEditarDispositivoLabel">Editar Dispositivo</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="nomeDispositivoEditar" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="nomeDispositivoEditar">
+          </div>
+          <div class="mb-3">
+            <label for="categoriaDispositivoEditar" class="form-label">Categoria</label>
+            <input type="text" class="form-control" id="categoriaDispositivoEditar">
+          </div>
+          <div class="mb-3">
+            <label for="localizacaoDispositivoEditar" class="form-label">Localização</label>
+            <input type="text" class="form-control" id="localizacaoDispositivoEditar">
+          </div>
+          <div class="mb-3">
+            <label for="statusDispositivoEditar" class="form-label">Status</label>
+            <select class="form-control" id="statusDispositivoEditar">
+              <option value="Em Uso">Em Uso</option>
+              <option value="Em Estoque">Em Estoque</option>
+              <option value="Danificado">Danificado</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="fabricanteDispositivoEditar" class="form-label">Fabricante</label>
+            <input type="text" class="form-control" id="fabricanteDispositivoEditar">
+          </div>
+          <div class="mb-3">
+            <label for="dataInstalacaoDispositivoEditar" class="form-label">Data de Instalação</label>
+            <input type="date" class="form-control" id="dataInstalacaoDispositivoEditar">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        <button type="button" id="btnSalvarEdicaoDispositivo" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Adicione este container em seu layout -->
+<div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/modulo.js') }}"></script>
+{% endblock %}
