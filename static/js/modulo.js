@@ -1,4 +1,4 @@
-const apiUrl = "https://sistema-gotham.onrender.com"; // Substitua pela URL do seu backend
+const apiUrl = "https://sistema-de-seguranca-de-gotham.onrender.com"; // Substitua pela URL do seu backend
 fetch(`${apiUrl}/dados`)
   .then(response => response.json())
   .then(data => console.log(data));
